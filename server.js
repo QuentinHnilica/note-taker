@@ -1,4 +1,3 @@
-const { json } = require('express')
 const express = require('express')
 const app = express()
 const fs = require('fs')
@@ -16,12 +15,12 @@ app.use(express.urlencoded({extended: true}))
 // GET /notes should return the notes.html file.
 
 app.get('/notes', (req, res) =>{
-    res.sendFile(path.join(__dirname, './public/notes.html'))
+    res.sendFile(path.join(__dirname, '/public/notes.html'))
 })
 
 // GET * should return the index.html file.
 app.get('/', (req, res) =>{
-    res.sendFile(path.join(__dirname, './public/index.html'))
+    res.sendFile(path.join(__dirname, '/public/index.html'))
 })
 // The following API routes should be created:
 
@@ -41,12 +40,12 @@ app.post('/api/notes', (req, res) => {
         const newCard = {title: req.body.title,
         text: req.body.text,
         id: newId}
-        newId ++
+        //newId ++
         fs.readFile('./db/db.json', 'utf-8', (err, data) =>{
             if(err) throw err
             const oldJson = JSON.parse(data)
             oldJson.push(newCard)
-            const newJson = JSON.stringify(oldJson)
+            let newJson = JSON.stringify(oldJson)
             fs.writeFile('./db/db.json', newJson, (err) => {
                 if (err) throw err
                 res.status(200)
