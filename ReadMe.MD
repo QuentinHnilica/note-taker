@@ -13,10 +13,7 @@
  [Contributions](#contributions)
  [Contact](#contact)
 
-  ## Installation
-  
-  
-  ## Test
+![image](note-taker.png)
   
 
   ## Usage
